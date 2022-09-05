@@ -10,26 +10,27 @@ import Home from "./components/home/Home";
 
 /* BUSINESS IMPORTS */
 import AddBusiness from "./components/business/AddBusiness";
-// import Business from "./components/business/Business";
+import Business from "./components/business/Business";
 import BusinessList from "./components/business/BusinessList";
 
 /* USER IMPORTS */
-// import AddUser from "./components/users/AddUser";
-// import User from "./components/users/User";
+import AddUser from "./components/users/AddUser";
+import User from "./components/users/User";
 import UserList from "./components/users/UserList";
 
 /* POINTS IMPORTS */
-// import AddPoint from "./components/points/AddPoint";
-// import Points from "./components/points/Points";
+import AddPoint from "./components/points/AddPoint";
+import Points from "./components/points/Points";
 import PointList from "./components/points/PointList";
 
 /* PUBLICATIONS IMPORTS */
-// import AddPublication from "./components/publications/AddPublication";
-// import Publication from "./components/publications/Publication";
+import AddPublication from "./components/publications/AddPublication";
+import Publication from "./components/publications/Publication";
 import PublicationList from "./components/publications/PublicationList";
 
 /* SELLGINS IMPORTS */
 import SellingList from "./components/sellings/SellingList";
+import AddSelling from "./components/sellings/AddSelling";
 
 function App() {
   return (
@@ -70,12 +71,25 @@ function App() {
       <div className="container mt-3">
         <Switch>
           <Route exact path={["/"]} component={Home} />
+          
           <Route exact path="/business" component={BusinessList} />
           <Route exact path="/business/add" component={AddBusiness} />
+          <Route exact path="/business/:Id" component={Business} />
+
           <Route exact path="/user" component={UserList} />
+          <Route exact path="/user/add" component={AddUser} />
+          <Route exact path="/user/:Id" component={User} />
+
           <Route exact path="/points" component={PointList} />
+          <Route exact path="/points/add" component={AddPoint} />
+          <Route exact path="/points/:Id" component={Points} />
+
           <Route exact path="/publication" component={PublicationList} />
+          <Route exact path="/publication/add" component={AddPublication} />
+          <Route exact path="/publication/:Id" component={Publication} />
+
           <Route exact path="/sellings" component={SellingList} />
+          <Route exact path="/sellings/add/:IdPublicacion" component={AddSelling} />
         </Switch>
       </div>
     </div>

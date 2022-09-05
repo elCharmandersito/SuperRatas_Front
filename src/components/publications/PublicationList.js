@@ -2,6 +2,8 @@ import React, { useState, useEffect, useMemo, useRef } from "react";
 import PublicationDataService from "../../services/PublicationService";
 import { useTable } from "react-table";
 
+import { Link } from "react-router-dom";
+
 const PublicationList = (props) => {
   const [publication, setPublication] = useState([]);
   const [searchNombre, setSearchNombre] = useState("");
@@ -135,38 +137,50 @@ const PublicationList = (props) => {
 
   return (
     <div className="list row" style={{ display: 'flex', justifyContent: 'center' }}>
-      
+      {/* TITULO */}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div>
           <h1><b>All Publications Registered</b></h1>
         </div>
       </div>
 
-      <hr/>
-      <br/>
+      <hr />
+      <br />
 
-      <div className="col-md-8">
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search Publication By Point Type"
-            value={searchNombre}
-            onChange={onChangeSearchNombre}
-          />
+      {/* CUADRO BUSQUEDA POR NOMBRE Y BOTON AGREGAR EMPRESA*/}
+
+      <div class="row justify-content-between">
+
+        <div class="col-6">
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search Business By Name"
+              value={searchNombre}
+              onChange={onChangeSearchNombre}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-primary"
+                type="button"
+                onClick={findByNombre}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2">
           <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByNombre}
-            >
-              Search
-            </button>
+            <Link to="/publication/add" className="btn btn-outline-primary">Add New Publication</Link>
           </div>
         </div>
       </div>
 
-      <br/>
+      <br />
+      <br />
 
       <div className="col-md-12 list">
         <table

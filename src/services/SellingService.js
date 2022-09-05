@@ -8,8 +8,8 @@ const get = (id) => {
   return http.get(`/sellings/${id}`);
 };
 
-const create = (data) => {
-  return http.post("/sellings", data);
+const create = (IdPublicacion, data) => {
+  return http.post(`/sellings/add/${IdPublicacion}`, data);
 };
 
 const SellingService = {

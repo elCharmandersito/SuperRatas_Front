@@ -6,6 +6,7 @@ import AccordionSummary from '@mui/material/AccordionSummary';
 import AccordionDetails from '@mui/material/AccordionDetails';
 import Typography from '@mui/material/Typography';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import { Link } from "react-router-dom";
 
 const PublicationList = (props) => {
 
@@ -27,7 +28,7 @@ const PublicationList = (props) => {
   const renderAccordion = (pub, index) => {
     return (
       <div>
-        <br/>
+        <br />
         <Accordion>
           <AccordionSummary
             expandIcon={<ExpandMoreIcon />}
@@ -35,25 +36,45 @@ const PublicationList = (props) => {
             id="panel1a-header"
             key={index}
           >
-            <Typography><h3><p>{pub.NombrePublicacion}</p></h3></Typography>
+            <Typography><h1><p><b><u>{pub.NombrePublicacion}</u></b></p></h1></Typography>
           </AccordionSummary>
+
           <AccordionDetails>
             <Typography>
-              {pub.Descripcion}
+              <div class="container">
+                <div class="row">
+                  <div class="col-sm">
+                    <h3><b>Description Point</b></h3> {pub.Descripcion}
+                  </div>
+                  <div class="col-sm">
+                    <h3><b>Minimus Point</b></h3> {pub.PuntosMinimos}
+                  </div>
+                  <div class="col-sm">
+                    <h3><b>Convertion Rate</b></h3> {pub.TasaCambio}
+                  </div>
+                  <div class="col-sm">
+                    <Link to={`/sellings/add/${pub.IdPublicacion}`}>
+                      <button type="button" class="btn btn-outline-success">
+                        <h3><b>Redeem Points</b></h3>
+                      </button>
+                    </Link>
+                  </div>
+                </div>
+              </div>
             </Typography>
           </AccordionDetails>
-        </Accordion>      
+        </Accordion>
       </div>
     );
   }
 
   return <div className="Home">
-      <div style={{ display: 'flex', justifyContent: 'center' }}>
-        <div>
-          <h2><b>Enjoy our list of publications</b></h2>
-        </div>
+    <div style={{ display: 'flex', justifyContent: 'center' }}>
+      <div>
+        <h2><b>Enjoy our list of publications</b></h2>
       </div>
-      <br/>
+    </div>
+    <br />
     {publication.map(renderAccordion)}
   </div>
 };

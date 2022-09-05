@@ -1,4 +1,4 @@
-import React, { useState, Route } from "react";
+import React, { useState } from "react";
 import BusinessDataSetvice from "../../services/BusinessService"
 
 const AddBusiness = () => {
@@ -7,13 +7,27 @@ const AddBusiness = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    BusinessDataSetvice.create(JSON.stringify(businessName));
-    <Route exact path="/business"></Route>
+    BusinessDataSetvice.create(JSON.stringify(businessName));  
+    window.location = '/business'
   }
 
   return (
-    <div className="row">
-      <div className="col-md-4">
+    <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
+      <div className="col-md-8">
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div>
+            <h1><b>Add Business</b></h1>
+          </div>
+        </div>
+
+        <hr />
+
+        <div style={{ display: 'flex', justifyContent: 'center' }}>
+          <div>
+            <h4>Enter Name</h4>
+          </div>
+        </div>
+
         <form onSubmit={handleSubmit} className="card card-body" method="POST">
           <div className="form-group">
             <input

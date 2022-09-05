@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useMemo, useRef } from "react";
 import PointDataService from "../../services/PointService";
 import { useTable } from "react-table";
+import { Link } from 'react-router-dom'
 
 const PointsList = (props) => {
   const [point, setPoint] = useState([]);
@@ -115,15 +116,50 @@ const PointsList = (props) => {
 
   return (
     <div className="list row" style={{ display: 'flex', justifyContent: 'center' }}>
-
+      {/* TITULO */}
       <div style={{ display: 'flex', justifyContent: 'center' }}>
         <div>
-          <h1><b>All Type Points Registered</b></h1>
+          <h1><b>All Type Point Registered</b></h1>
         </div>
       </div>
 
-      <hr/>
-      <br/>
+      <hr />
+      <br />
+
+      {/* CUADRO BUSQUEDA POR NOMBRE Y BOTON AGREGAR EMPRESA*/}
+
+      <div class="row justify-content-between">
+
+        <div class="col-6">
+          <div className="input-group">
+            <input
+              type="text"
+              className="form-control"
+              placeholder="Search Business By Name"
+              value={searchNombre}
+              onChange={onChangeSearchNombre}
+            />
+            <div className="input-group-append">
+              <button
+                className="btn btn-outline-primary"
+                type="button"
+                onClick={findByNombre}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-2">
+          <div className="input-group-append">
+          <Link to="/points/add" className="btn btn-outline-primary">Add New Point</Link>            
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <br />
       
       <div className="col-md-8">
         <div className="input-group mb-3">
