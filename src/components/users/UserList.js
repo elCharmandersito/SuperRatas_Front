@@ -66,31 +66,27 @@ const UserList = (props) => {
   const columns = useMemo(
     () => [
       {
-        Header: "ID",
-        accessor: "IdUsuario",
-      },
-      {
-        Header: "Rut",
+        Header: "CLIENT RUT",
         accessor: "ClienteRut",
       },
       {
-        Header: "DV",
+        Header: "DV RUT",
         accessor: "ClienteDV"
       },
       {
-        Header: "Nombre",
+        Header: "NAME",
         accessor: "Nombre"
       },
       {
-        Header: "Apellido",
+        Header: "LASTNAME",
         accessor: "Apellido"
       },
       {
-        Header: "Puntos Totales",
+        Header: "TOTAL POINTS",
         accessor: "TotalPuntos"
       },
       {
-        Header: "Actions",
+        Header: "ACTIONS",
         accessor: "actions",
         Cell: (props) => {
           const rowIdx = props.row.id;
@@ -137,31 +133,23 @@ const UserList = (props) => {
       {/* CUADRO BUSQUEDA POR NOMBRE Y BOTON AGREGAR EMPRESA*/}
 
       <div class="row justify-content-between">
-
-        <div class="col-6">
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search Business By Name"
-              value={searchNombre}
-              onChange={onChangeSearchNombre}
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-primary"
-                type="button"
-                onClick={findByNombre}
-              >
-                Search
-              </button>
+        <div class="container" style={{ justifyContent: 'center' }}>
+          <div class="row">
+            <div className="col-md">
             </div>
-          </div>
-        </div>
-
-        <div class="col-2">
-          <div className="input-group-append">
-            <Link to="/user/add" className="btn btn-outline-primary">Add New User</Link>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+              <div className="input-group-append">
+                <Link to="/user/add" className="btn btn-outline-primary">Add New User</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

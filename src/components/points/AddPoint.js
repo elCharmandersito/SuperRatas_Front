@@ -2,15 +2,6 @@ import React, { useEffect, useState } from "react";
 import PointDataService from "../../services/PointService"
 import BusinessDataService from "../../services/BusinessService"
 
-import Select from 'react-select'
-import axios from "axios";
-
-const data = [
-  {label:'Facebook', value:'Facebook'},
-  {label:'Instagram', value:'Instagram'},
-  {label:'Youtube', value:'Youtube'}
-]
-
 const AddPoint = () => {
 
   const [pointName, setPointName] = useState('')
@@ -18,26 +9,27 @@ const AddPoint = () => {
 
   const [business, setBusiness] = useState([]);
 
-  const handleSelectedChange = (e) => {
-    console.log(e);
-  }
-
-  useEffect(() => {
-    retrieveBusiness();
-  }, []);
-
   const handleSubmit = (e) => {
-    console.log(e)
-  }
+    e.preventDefault();
 
-  const retrieveBusiness = () => {
-    BusinessDataService.getAll()
-      .then((response) => {
-        setBusiness(response.data);
-      }).catch((e) => {
-        console.log(e);
-      });
-  };
+    console.log(JSON.stringify({
+      IdBusiness: business,
+      PointName: pointName,
+      Description: pointDescription
+    }));
+
+    const res = PointDataService.create(JSON.stringify({
+      IdBusiness: business,
+      PointName: pointName,
+      Description: pointDescription
+    }));
+    console.log(res);
+
+    var millisecondsToWait = 1000;
+    setTimeout(function () {
+      window.location = '/points'
+    }, millisecondsToWait)
+  }
 
   return (
     <div className="row" style={{ display: 'flex', justifyContent: 'center' }}>
@@ -55,17 +47,17 @@ const AddPoint = () => {
           <div className="form-group">
             <div style={{ display: 'flex', justifyContent: 'left' }}>
               <div>
-                <h5><b>Select Business</b></h5>
+                <h5><b>Enter Business</b></h5>
               </div>
             </div>
 
-            <Select
-              options = {business}
-              onChange = {handleSelectedChange}
+            <input
+              type="text"
+              onChange={e => setBusiness(e.target.value)}
+              value={business}
+              className="form-control"
+              autoFocus
             />
-
-           
-
           </div>
 
           <div className="form-group">

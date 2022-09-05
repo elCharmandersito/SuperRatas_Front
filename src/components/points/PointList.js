@@ -66,23 +66,23 @@ const PointsList = (props) => {
   const columns = useMemo(
     () => [
       {
-        Header: "ID",
+        Header: "ID POINT",
         accessor: "IdPunto",
       },
       {
-        Header: "ID Empresa",
+        Header: "ID BUSINESS",
         accessor: "IdEmpresa",
       },
       {
-        Header: "Nombre de Punto",
+        Header: "POINT NAME",
         accessor: "NombrePunto"
       },
       {
-        Header: "Desactivado",
+        Header: "DEACTIVATE",
         accessor: "Desactivado"
       },
       {
-        Header: "Actions",
+        Header: "ACTIONS",
         accessor: "actions",
         Cell: (props) => {
           const rowIdx = props.row.id;
@@ -129,31 +129,23 @@ const PointsList = (props) => {
       {/* CUADRO BUSQUEDA POR NOMBRE Y BOTON AGREGAR EMPRESA*/}
 
       <div class="row justify-content-between">
-
-        <div class="col-6">
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search Business By Name"
-              value={searchNombre}
-              onChange={onChangeSearchNombre}
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-primary"
-                type="button"
-                onClick={findByNombre}
-              >
-                Search
-              </button>
+        <div class="container" style={{ justifyContent: 'center' }}>
+          <div class="row">
+            <div className="col-md">
             </div>
-          </div>
-        </div>
-
-        <div class="col-2">
-          <div className="input-group-append">
-          <Link to="/points/add" className="btn btn-outline-primary">Add New Point</Link>            
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+              <div className="input-group-append">
+                <Link to="/points/add" className="btn btn-outline-primary">Add New Point</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -161,27 +153,6 @@ const PointsList = (props) => {
       <br />
       <br />
       
-      <div className="col-md-8">
-        <div className="input-group mb-3">
-          <input
-            type="text"
-            className="form-control"
-            placeholder="Search Point By Name"
-            value={searchNombre}
-            onChange={onChangeSearchNombre}
-          />
-          <div className="input-group-append">
-            <button
-              className="btn btn-outline-secondary"
-              type="button"
-              onClick={findByNombre}
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </div>
-
       <div className="col-md-12 list">
         <table
           className="table table-striped table-bordered"

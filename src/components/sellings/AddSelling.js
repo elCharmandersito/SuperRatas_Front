@@ -19,8 +19,8 @@ const AddSelling = () => {
     const [setMinimalPoints] = useState('')
     const [setClientRut] = useState('')
     const [setClientPoints] = useState('')
-    const [setTypePoint] = useState('')
-    const [userPoints, setUserPoints] = useState("");
+    const [setTypePoint] = useState(0)
+    const [userPoints, setUserPoints] = useState(0);
     const [setConvertedRate] = useState('')
 
     let { IdPublicacion } = useParams();
@@ -48,37 +48,21 @@ const AddSelling = () => {
     }
 
     const handleSaveSelling = async () => {
-        console.log(window.location.href);
-
-        console.log(JSON.stringify({
-            IdPub: IdPublicacion,
-            idMinimalPointsUser: document.getElementById("minPoints").value,
-            ClientRut: document.getElementById("clientRut").value,
-            ClientPoints: document.getElementById("clientPoints").value,
-            TypePoint: document.getElementById("typePoint").value,
-            userPoints: userPoints,
-            ConvertedRate: document.getElementById("convertRate").value
-        }));
 
         const selling = {
-            IdPub: IdPublicacion,
-            idMinimalPointsUser: document.getElementById("minPoints").value,
+            ClientPoints: Number(userPoints),
             ClientRut: document.getElementById("clientRut").value,
-            ClientPoints: document.getElementById("clientPoints").value,
-            TypePoint: document.getElementById("typePoint").value,
-            userPoints: userPoints,
-            ConvertedRate: document.getElementById("convertRate").value
+            TypePoint: Number(document.getElementById("typePoint").value)
         }
 
-        await axios.post(`http://localhost:5000/sellings/add/${IdPublicacion}`, JSON.stringify(selling), {
-            headers: {
-                'content-type': 'application/json'
-            }
-        }).then(response => console.log(response)).catch(error => {
-            console.log(error);
-        })
+        SellingDataService.create(IdPublicacion, JSON.stringify(selling))
+            .then(res => console.log(res))
+                .catch(error => console.log(error));
 
-        window.location = '/sellings'
+        var millisecondsToWait = 1500;
+        setTimeout(function () {
+            window.location = '/sellings'
+        }, millisecondsToWait)
     }
 
     return (
@@ -266,7 +250,7 @@ const AddSelling = () => {
 
                                 <br />
 
-                                <button className="btn btn-primary btn-block" disabled={!userPoints}>
+                                <button type="submit" className="btn btn-primary btn-block" disabled={!userPoints} >
                                     Redeem Points
                                 </button>
                             </div>

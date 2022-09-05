@@ -13,22 +13,26 @@ const AddUser = () => {
         e.preventDefault();
 
         console.log(JSON.stringify({
-            userRut,
-            userDv,
-            userName,
-            userLastName,
-            userPoints
+            userRut: userRut,
+            userDv: userDv,
+            userName: userName,
+            userLastName: userLastName,
+            userPoints: userPoints
         }))
 
         const res = UserDataService.create(JSON.stringify({
-            userRut,
-            userDv,
-            userName,
-            userLastName,
-            userPoints
+            userRut: userRut,
+            userDv: userDv,
+            userName: userName,
+            userLastName: userLastName,
+            userPoints: userPoints
         })); 
         console.log(res);
-        window.location = '/user'
+
+        var millisecondsToWait = 1000;
+        setTimeout(function(){
+            window.location = '/user'
+        }, millisecondsToWait)        
     }
 
     return (

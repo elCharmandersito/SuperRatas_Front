@@ -7,8 +7,14 @@ const AddBusiness = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    BusinessDataSetvice.create(JSON.stringify(businessName));  
-    window.location = '/business'
+    BusinessDataSetvice.create(JSON.stringify({
+      businessName: businessName
+    }));
+
+    var millisecondsToWait = 1000;
+    setTimeout(function () {
+      window.location = '/business'
+    }, millisecondsToWait)
   }
 
   return (

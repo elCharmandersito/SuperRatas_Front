@@ -9,7 +9,10 @@ const get = (id) => {
 };
 
 const create = (IdPublicacion, data) => {
-  return http.post(`/sellings/add/${IdPublicacion}`, data);
+  return http.post(`/sellings/add/${IdPublicacion}`, JSON.stringify(data),{
+    Accept: 'application/json',
+    'Content-Type':'application/json'
+  });
 };
 
 const SellingService = {

@@ -1,10 +1,10 @@
-import React, { useState, Route } from "react";
-import UserDataService from "../../services/UserService"
+import React, { useState } from "react";
+import PublicationDataService from "../../services/PublicationService"
 
 const AddPublication = () => {
 
     const [idPoint, setidPoint] = useState('')
-    const [idUser, setIdUser] = useState('')
+    const [userRut, setClientRut] = useState('')
     const [pubName, setPubName] = useState('')
     const [pubDescription, setPubDescription] = useState('')
     const [pubPoints, setPubPopint] = useState('')
@@ -15,22 +15,26 @@ const AddPublication = () => {
 
         console.log(JSON.stringify({
             IdPoint: idPoint,
-            idUser: idUser,
+            UserRut: userRut,
             PubName: pubName,
-            PubDescrip: pubDescription,
-            PubPoints: pubPoints,
-            PubRate: pubRate
+            Description: pubDescription,
+            MinimusPoint: pubPoints,
+            ConvertedRate: pubRate
         }))
 
-        UserDataService.create(JSON.stringify({
+        PublicationDataService.create(JSON.stringify({
             IdPoint: idPoint,
-            idUser: idUser,
+            UserRut: userRut,
             PubName: pubName,
-            PubDescrip: pubDescription,
-            PubPoints: pubPoints,
-            PubRate: pubRate
-        })); 
-        window.location = '/publication'
+            Description: pubDescription,
+            MinimusPoint: pubPoints,
+            ConvertedRate: pubRate
+        })).then(res => console.log(res));
+        
+        var millisecondsToWait = 1000;
+        setTimeout(function () {
+            window.location = '/publication'
+        }, millisecondsToWait)
     }
 
     return (
@@ -68,8 +72,8 @@ const AddPublication = () => {
                         </div>
                         <input
                             type="text"
-                            onChange={e => setIdUser(e.target.value)}
-                            value={idUser}
+                            onChange={e => setClientRut(e.target.value)}
+                            value={userRut}
                             className="form-control"
                         />
                     </div>

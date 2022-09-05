@@ -24,6 +24,7 @@ const PublicationList = (props) => {
     PublicationDataService.getAll()
       .then((response) => {
         setPublication(response.data);
+        console.log(response.data);
       }).catch((e) => {
         console.log(e);
       });
@@ -75,8 +76,8 @@ const PublicationList = (props) => {
         accessor: "IdPunto",
       },
       {
-        Header: "ID Usuario",
-        accessor: "IdUsuario",
+        Header: "Client Rut",
+        accessor: "RutUsuario",
       },
       {
         Header: "Nombre Publicacion",

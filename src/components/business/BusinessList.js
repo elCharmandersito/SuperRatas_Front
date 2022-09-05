@@ -36,7 +36,7 @@ const BusinessList = (props) => {
       .catch((e) => {
         console.log(e);
       });
-  };  
+  };
 
   const openBusiness = (rowIndex) => {
     const id = businessRef.current[rowIndex].IdEmpresa;
@@ -66,19 +66,19 @@ const BusinessList = (props) => {
   const columns = useMemo(
     () => [
       {
-        Header: "ID",
+        Header: "BUSINESS ID",
         accessor: "IdEmpresa"
       },
       {
-        Header: "Nombre",
+        Header: "BUSINESS NAME",
         accessor: "Nombre",
       },
       {
-        Header: "Desactivado",
+        Header: "DEACTIVATE",
         accessor: "Desactivado"
       },
       {
-        Header: "Actions",
+        Header: "ACTIONS",
         accessor: "actions",
         Cell: (props) => {
           const rowIdx = props.row.id;
@@ -125,31 +125,21 @@ const BusinessList = (props) => {
       {/* CUADRO BUSQUEDA POR NOMBRE Y BOTON AGREGAR EMPRESA*/}
 
       <div class="row justify-content-between">
-
-        <div class="col-6">
-          <div className="input-group">
-            <input
-              type="text"
-              className="form-control"
-              placeholder="Search Business By Name"
-              value={searchNombre}
-              onChange={onChangeSearchNombre}
-            />
-            <div className="input-group-append">
-              <button
-                className="btn btn-outline-primary"
-                type="button"
-                onClick={findByNombre}
-              >
-                Search
-              </button>
+        <div class="container" style={{ justifyContent: 'center' }}>
+          <div class="row">
+            <div className="col-md">
             </div>
-          </div>
-        </div>
-
-        <div class="col-2">
-          <div className="input-group-append">
-          <Link to="/business/add" className="btn btn-outline-primary">Add New Business</Link>            
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+            </div>
+            <div className="col-md">
+              <div className="input-group-append">
+                <Link to="/business/add" className="btn btn-outline-primary">Add New Business</Link>
+              </div>
+            </div>
           </div>
         </div>
       </div>

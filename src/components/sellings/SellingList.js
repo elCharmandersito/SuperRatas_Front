@@ -24,35 +24,35 @@ const SellingList = (props) => {
   const columns = useMemo(
     () => [
       {
-        Header: "ID",
+        Header: "ID SELLING",
         accessor: "IdVenta",
       },
       {
-        Header: "ID Publicacion",
+        Header: "ID PUBLICATION",
         accessor: "IdPublicacion",
       },
       {
-        Header: "Cliente",
+        Header: "BUYER",
         accessor: "rutCliente",
       },
       {
-        Header: "Punto Comprado",
+        Header: "ITEM PURCHASE",
         accessor: "tipoPunto",
       },
       {
-        Header: "Puntos Convertido",
+        Header: "CONVERTED POINTS",
         accessor: "puntosConvertidos",
       },
       {
-        Header: "Tasa Conversion",
+        Header: "CONVERTION RATE ($)",
         accessor: "tasaConversion",
       },
       {
-        Header: "Valor en Peso (CLP)",
+        Header: "VALUE IN CLP",
         accessor: "valorCLP"
       },
       {
-        Header: "Fecha Operacion",
+        Header: "TRANSACTION DATE",
         accessor: "fechaOperacion"
       }
     ],
